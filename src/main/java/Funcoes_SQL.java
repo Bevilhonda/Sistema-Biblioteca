@@ -1,0 +1,222 @@
+import java.sql.*;
+
+public class Funcoes_SQL {
+
+    public void Comando_Select(){
+
+        try {
+            Conection_Mysql conectando_banco = new Conection_Mysql();
+
+            Connection conecta_banco = conectando_banco.getconection();
+
+            Statement nova_conexao = conecta_banco.createStatement();
+
+            ResultSet executa_query = nova_conexao.executeQuery
+                    ("select * from Livro join Autor on (Livro.fk_autor = Autor.id_autor )");
+
+            while (executa_query.next()){
+
+                Autor autor1 = new Autor(executa_query.getString("nome"),
+                        executa_query.getString("sobrenome"),
+                        executa_query.getDate("data_nascimento").toInstant(),
+                        executa_query.getInt("id_autor"));
+
+                Livro livro1 = new Livro(executa_query.getString("titulo"),autor1,
+                        executa_query.getDate("data_publication").toInstant(),
+                        executa_query.getInt("edicao"),
+                        executa_query.getInt("fk_biblioteca"),
+                        executa_query.getInt("idlivro"));
+
+                livro1.Print_Livro();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+ //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+    public void Inserir_Livros(Livro novo_livro ){
+
+        String inserir_livro =
+                "insert into Livro (titulo,edicao,fk_autor,fk_biblioteca,data_publication) values(?,?,?,?,?)";
+
+        try {
+
+            Conection_Mysql conect = new Conection_Mysql();
+
+            Connection conecta_banco = conect.getconection();
+
+            PreparedStatement insere_dados = conecta_banco.prepareStatement(inserir_livro);
+
+            insere_dados.setString(1,novo_livro.getTitulo_livro());
+            insere_dados.setInt(2,novo_livro.getEdicao());
+            insere_dados.setInt(3,novo_livro.getAutor().getId_autor());
+            insere_dados.setInt(4,novo_livro.getId_biblioteca());
+            insere_dados.setDate(5, Date.valueOf(novo_livro.getData_publication().toString()));
+
+            insere_dados.execute();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+ //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+    public void Atualiza_Livros(Livro livro){
+
+        String atualiza_dados_livro =
+                "update Livro set titulo = ? , edicao = ? , data_publication = ? where idLivro = ? ";
+
+        try {
+            Conection_Mysql conecta_banco = new Conection_Mysql();
+
+            Connection conexao_banco = conecta_banco.getconection();
+
+            PreparedStatement insercao_dados = conexao_banco.prepareStatement(atualiza_dados_livro);
+
+            insercao_dados.setString(1,livro.getTitulo_livro());
+            insercao_dados.setInt(2,livro.getEdicao());
+            insercao_dados.setDate(3, Date.valueOf(livro.getData_publication().toString()));
+            insercao_dados.setInt(4,livro.getId_livro());
+
+            insercao_dados.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+    public void Exclui_Livro(int id_livro){
+        String comando_excluir = "delete from Livro where idLivro = ? ";
+
+        try {
+
+            Conection_Mysql conecta = new Conection_Mysql();
+
+            Connection conecta_banco = conecta.getconection();
+
+            PreparedStatement insere_dados = conecta_banco.prepareStatement(comando_excluir);
+
+            insere_dados.setInt(1,id_livro);
+
+            insere_dados.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+    public void Seleciona_um_Livro(){
+        try {
+            Conection_Mysql conectando_banco = new Conection_Mysql();
+
+            Connection conecta_banco = conectando_banco.getconection();
+
+            Statement nova_conexao = conecta_banco.createStatement();
+
+            ResultSet executa_query = nova_conexao.executeQuery
+                    ("SELECT * FROM Livro join Autor on fk_autor = id_autor WHERE id_livro = 519;");
+
+            while (executa_query.next()){
+
+                Autor autor1 = new Autor(executa_query.getString("nome"),
+                        executa_query.getString("sobrenome"),
+                        executa_query.getDate("data_nascimento").toInstant(),
+                        executa_query.getInt("id_autor"));
+
+                Livro livro1 = new Livro(executa_query.getString("titulo"),autor1,
+                        executa_query.getDate("data_publication").toInstant(),
+                        executa_query.getInt("edicao"),
+                        executa_query.getInt("fk_biblioteca"),
+                        executa_query.getInt("idlivro"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+    public void Seleciona_TodosLivros_Autor(){
+
+        try {
+            Conection_Mysql conectando_banco = new Conection_Mysql();
+
+            Connection conecta_banco = conectando_banco.getconection();
+
+            Statement nova_conexao = conecta_banco.createStatement();
+
+            ResultSet executa_query = nova_conexao.executeQuery
+                    ("SELECT * from Livro join Autor on fk_autor = id_autor where id_autor = 240;");
+
+            while (executa_query.next()){
+
+                Autor autor1 = new Autor(executa_query.getString("nome"),
+                        executa_query.getString("sobrenome"),
+                        executa_query.getDate("data_nascimento").toInstant(),
+                        executa_query.getInt("id_autor"));
+
+                Livro livro1 = new Livro(executa_query.getString("titulo"),autor1,
+                        executa_query.getDate("data_publication").toInstant(),
+                        executa_query.getInt("edicao"),
+                        executa_query.getInt("fk_biblioteca"),
+                        executa_query.getInt("idlivro"));
+
+                livro1.Print_Livro();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+   public void Incluir_Autor(Autor novo_autor){
+
+        String adiciona_autor =
+                "insert into Autor (nome,sobrenome,data_nascimento) values (?,?,?)";
+
+        try {
+            Conection_Mysql conecta = new Conection_Mysql();
+
+            Connection conecta_banco = conecta.getconection();
+
+            PreparedStatement insere_dados_autor = conecta_banco.prepareStatement(adiciona_autor);
+
+            insere_dados_autor.setString(1,novo_autor.getNome());
+            insere_dados_autor.setString(2,novo_autor.getSobrenome());
+            insere_dados_autor.setDate(3, Date.valueOf(novo_autor.getData_nascimento().toString()));
+
+
+            insere_dados_autor.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+ //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+ public void Update_Autor(Autor novos_dados){
+
+     String atualiza_dados_autor =
+             "update Autor set nome = ? ,sobrenome = ? ,data_nascimento = ? where id_autor = ?";
+
+     try {
+         Conection_Mysql conecta = new Conection_Mysql();
+
+         Connection conectando_banco = conecta.getconection();
+         
+         PreparedStatement insere_dados_autor = conectando_banco.prepareStatement(atualiza_dados_autor);
+
+         insere_dados_autor.setString(1,novos_dados.getNome());
+         insere_dados_autor.setString(2,novos_dados.getSobrenome());
+         insere_dados_autor.setDate(3, Date.valueOf(novos_dados.getData_nascimento().toString()));
+         insere_dados_autor.setInt(4,novos_dados.getId_autor());
+
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+ }
+}
