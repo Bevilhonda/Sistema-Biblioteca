@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.time.ZoneOffset;
 
 public class Funcoes_SQL {
 
@@ -89,7 +90,7 @@ public class Funcoes_SQL {
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
     public void Exclui_Livro(int id_livro){
-        String comando_excluir = "delete from Livro where idLivro = ? ";
+        String comando_excluir = "delete from Livro where id_Livro = ? ";
 
         try {
 
@@ -188,7 +189,9 @@ public class Funcoes_SQL {
 
             insere_dados_autor.setString(1,novo_autor.getNome());
             insere_dados_autor.setString(2,novo_autor.getSobrenome());
-            insere_dados_autor.setDate(3, Date.valueOf(novo_autor.getData_nascimento().toString()));
+            insere_dados_autor.setTimestamp
+                    (3, Timestamp.from(novo_autor.getData_nascimento().
+                            atOffset(ZoneOffset.UTC).toInstant()));
 
 
             insere_dados_autor.execute();
@@ -201,18 +204,20 @@ public class Funcoes_SQL {
  public void Update_Autor(Autor novos_dados){
 
      String atualiza_dados_autor =
-             "update Autor set nome = ? ,sobrenome = ? ,data_nascimento = ? where id_autor = ?";
+             "UPDATE Autor set nome = ? ,sobrenome = ? ,data_nascimento = ? where id_autor = ? ;";
 
      try {
          Conection_Mysql conecta = new Conection_Mysql();
 
          Connection conectando_banco = conecta.getconection();
-         
+
          PreparedStatement insere_dados_autor = conectando_banco.prepareStatement(atualiza_dados_autor);
 
          insere_dados_autor.setString(1,novos_dados.getNome());
          insere_dados_autor.setString(2,novos_dados.getSobrenome());
-         insere_dados_autor.setDate(3, Date.valueOf(novos_dados.getData_nascimento().toString()));
+         insere_dados_autor.setTimestamp
+                 (3,Timestamp.from(novos_dados.getData_nascimento().
+                         atOffset(ZoneOffset.UTC).toInstant()));
          insere_dados_autor.setInt(4,novos_dados.getId_autor());
 
      } catch (SQLException e) {
