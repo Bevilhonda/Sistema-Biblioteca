@@ -55,7 +55,7 @@ public class Funcoes_SQL {
             insere_dados.setInt(3, novo_livro.getAutor().getId_autor());
             insere_dados.setInt(4, novo_livro.getId_biblioteca());
             insere_dados.setTimestamp
-                    (5,Timestamp.from(novo_livro.getData_publication().atOffset
+                    (5, Timestamp.from(novo_livro.getData_publication().atOffset
                             (ZoneOffset.UTC).toInstant()));
 
             insere_dados.execute();
@@ -81,7 +81,7 @@ public class Funcoes_SQL {
             insercao_dados.setString(1, livro.getTitulo_livro());
             insercao_dados.setInt(2, livro.getEdicao());
             insercao_dados.setTimestamp
-                    (3,Timestamp.from(livro.getData_publication().atOffset
+                    (3, Timestamp.from(livro.getData_publication().atOffset
                             (ZoneOffset.UTC).toInstant()));
             insercao_dados.setInt(4, livro.getId_livro());
 
