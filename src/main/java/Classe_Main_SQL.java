@@ -58,14 +58,13 @@ public class Classe_Main_SQL {
         // insert.Update_Autor(autor2);
 
         Input_Dados_Autor input_autor = new Input_Dados_Autor();//CADASTRA UM AUTOR NO BANCO -- 100% testado
-        //input_autor.Input_Dados_Autor();
+        //input_autor.Inserir_Autor();
 
         Input_Dados_Endereco novo_endereco = new Input_Dados_Endereco();// CADASTRA UM ENDEREÇO NO BANCO -- 100% testado
-        //novo_endereco.Input_Dados_Endereco();
+        //novo_endereco.Inserir_Dados_Endereco();
 
         Pesquisa_LivroBanco mostra_livro = new Pesquisa_LivroBanco();// PESQUISA LIVRO NO BANCO -- 100% testado
-        //mostra_livro.Pesquisa_LivroBanco();
-
+        //mostra_livro.Seleciona_LivroBanco();
 
     }
 }
