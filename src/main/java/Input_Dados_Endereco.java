@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 public class Input_Dados_Endereco {
     private String rua;
     private int numero;

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Input_Dados_Autor {
     String nome_autor;
     String sobrenome_autor;
-    Instant data_nascimento ;
+    Instant data_nascimento;
 
     public void Inserir_Autor() {
         String adiciona_autor =
@@ -31,8 +31,8 @@ public class Input_Dados_Autor {
 
             PreparedStatement insere_dados_autor = conecta_banco.prepareStatement(adiciona_autor);
 
-            insere_dados_autor.setString(1,nome_autor);
-            insere_dados_autor.setString(2,sobrenome_autor);
+            insere_dados_autor.setString(1, nome_autor);
+            insere_dados_autor.setString(2, sobrenome_autor);
             insere_dados_autor.setTimestamp
                     (3, Timestamp.from(data_nascimento.atOffset(ZoneOffset.UTC).toInstant()));
 

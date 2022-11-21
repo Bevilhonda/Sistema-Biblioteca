@@ -17,14 +17,14 @@ public class Pesquisa_LivroBanco {
             Connection conecta_banco = conecta.getconection();
 
             PreparedStatement seleciona_livro = conecta_banco.prepareStatement(busca_livro);
-            seleciona_livro.setInt(1,getId_livro());
+            seleciona_livro.setInt(1, getId_livro());
 
             ResultSet mostra_livro = seleciona_livro.executeQuery();
-            while (mostra_livro.next()){
+            while (mostra_livro.next()) {
                 System.out.println(mostra_livro.getString("id_Livro"));
                 System.out.println(mostra_livro.getString("titulo"));
                 System.out.println(mostra_livro.getInt(3));
-                System.out.println(mostra_livro.getDate( 6));
+                System.out.println(mostra_livro.getDate(6));
 
             }
 
@@ -32,6 +32,7 @@ public class Pesquisa_LivroBanco {
             e.printStackTrace();
         }
     }
+
     public int getId_livro() {
         return id_livro;
     }
