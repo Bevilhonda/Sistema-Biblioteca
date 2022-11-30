@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id "org.flywaydb.flyway" version "9.8.3"
     id 'java'
 }
 
@@ -13,16 +14,15 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     implementation 'mysql:mysql-connector-java:8.0.30'
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
     implementation 'junit:junit:4.13.2'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'com.h2database:h2:2.1.214'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
-
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
