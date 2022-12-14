@@ -1,4 +1,4 @@
-import junit.framework.TestCase;
+import com.teste.implementabiblioteca.Endereco;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,3 +1,7 @@
+package com.teste.implementabiblioteca;
+
+import com.teste.implementabiblioteca.Autor;
+
 import java.time.Instant;
 
 public class Livro {

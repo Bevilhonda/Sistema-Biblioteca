@@ -1,3 +1,7 @@
+package com.teste.implementabiblioteca;
+
+import com.teste.implementabiblioteca.Conection_Mysql;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +17,7 @@ public class Input_Dados_Endereco {
     public void Inserir_Dados_Endereco() {
 
         String adiciona_endereco =
-                "insert into Endereco(rua,numero,bairro,cidade,estado) values(?,?,?,?,?);";
+                "insert into com.teste.implementabiblioteca.Endereco(rua,numero,bairro,cidade,estado) values(?,?,?,?,?);";
 
         try {
 

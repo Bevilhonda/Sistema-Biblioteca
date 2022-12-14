@@ -1,3 +1,6 @@
+import com.teste.implementabiblioteca.Biblioteca;
+import com.teste.implementabiblioteca.Endereco;
+import com.teste.implementabiblioteca.Livro;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;

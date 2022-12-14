@@ -1,3 +1,5 @@
+import com.teste.implementabiblioteca.Autor;
+import com.teste.implementabiblioteca.Livro;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

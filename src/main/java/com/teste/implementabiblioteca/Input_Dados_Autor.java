@@ -1,3 +1,7 @@
+package com.teste.implementabiblioteca;
+
+import com.teste.implementabiblioteca.Conection_Mysql;
+
 import java.sql.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -12,15 +16,15 @@ public class Input_Dados_Autor {
 
     public void Inserir_Autor() {
         String adiciona_autor =
-                "insert into Autor (nome,sobrenome,data_nascimento) values (?,?,?)";
+                "insert into com.teste.implementabiblioteca.Autor (nome,sobrenome,data_nascimento) values (?,?,?)";
 
         try {
             Scanner dados_autor = new Scanner(System.in);
-            System.out.println("Digite o nome do Autor");
+            System.out.println("Digite o nome do com.teste.implementabiblioteca.Autor");
             nome_autor = dados_autor.next();
-            System.out.println("Digite o sobrenome do Autor");
+            System.out.println("Digite o sobrenome do com.teste.implementabiblioteca.Autor");
             sobrenome_autor = dados_autor.next();
-            System.out.println("Digite a idade do Autor:");
+            System.out.println("Digite a idade do com.teste.implementabiblioteca.Autor:");
             data_nascimento = LocalDateTime.parse(dados_autor.next() + " 00:00:00",
                             DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
                     .toInstant(ZoneOffset.UTC);

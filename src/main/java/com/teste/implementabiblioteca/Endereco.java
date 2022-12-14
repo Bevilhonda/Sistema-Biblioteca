@@ -1,3 +1,5 @@
+package com.teste.implementabiblioteca;
+
 public class Endereco {
 
     private final String rua;

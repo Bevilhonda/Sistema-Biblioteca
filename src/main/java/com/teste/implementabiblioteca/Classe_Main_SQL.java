@@ -1,3 +1,9 @@
+package com.teste.implementabiblioteca;
+
+import com.teste.implementabiblioteca.Autor;
+import com.teste.implementabiblioteca.Funcoes_SQL;
+import com.teste.implementabiblioteca.Livro;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -34,7 +40,7 @@ public class Classe_Main_SQL {
 
         //insert.Inserir_Livros(livro);
 
-        //XXXXX Aqui atualiza dados do Livro no banco mysql. -- 100%testado
+        //XXXXX Aqui atualiza dados do com.teste.implementabiblioteca.Livro no banco mysql. -- 100%testado
 
         //insert.Atualiza_Livros(livro);
 
@@ -53,7 +59,7 @@ public class Classe_Main_SQL {
 
         // insert.Incluir_Autor(autor);
 
-        //XXXX Aqui atualizada dados do Autor no Banco mysql -- 100% testado
+        //XXXX Aqui atualizada dados do com.teste.implementabiblioteca.Autor no Banco mysql -- 100% testado
 
         // insert.Update_Autor(autor2);
 
