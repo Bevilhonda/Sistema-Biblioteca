@@ -25,12 +25,12 @@ public interface Query_Repository extends JpaRepository<AutorEntity, Integer> {
             "Autor  " +
             "set nome = :nome , sobrenome = :sobrenome , data_nascimento = :data_nascimento " +
             " where id_autor = :id_autor", nativeQuery = true)
-    AutorEntity Update_Autor(String nome , String sobrenome , Instant data_nascimento , Integer id_autor);
+    AutorEntity Update_Autor(String nome, String sobrenome, Instant data_nascimento, Integer id_autor);
 
     @Modifying
     @Query(value = "Insert into Autor " +
             "(nome, sobrenome, data_nascimento)" +
-            " values (:nome , :sobrenome,:data_nascimento)",  nativeQuery = true)
-    public void inserir_autor(@Param("nome") String nome , @Param("sobrenome") String sobrenome , @Param("data_nascimento") Instant data_nascimento);
+            " values (:nome , :sobrenome,:data_nascimento)", nativeQuery = true)
+    public void inserir_autor(@Param("nome") String nome, @Param("sobrenome") String sobrenome, @Param("data_nascimento") Instant data_nascimento);
 
 }
