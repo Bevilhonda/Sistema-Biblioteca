@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.time.Instant;
 
 @Entity
-@Table(name = "autor")
+@Table(name = "Autor")
 public class Autor_Entity {
 
     public Autor_Entity(String nome, String sobrenome, Instant data_nascimento) {
@@ -15,6 +15,7 @@ public class Autor_Entity {
         data_nascimento = data_nascimento;
         sobrenome = sobrenome;
     }
+
     @Id
     @GeneratedValue
     Integer id_autor;

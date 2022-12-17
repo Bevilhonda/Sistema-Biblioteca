@@ -21,14 +21,9 @@ public class AutorEntity {
     @Id
     @GeneratedValue
     Integer id_autor;
-
     String nome;
-
     String sobrenome;
-
     Instant data_nascimento;
-
-
     public Integer getId_autor() {
         return id_autor;
     }
